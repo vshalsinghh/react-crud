@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react';
 
 
-const UserForm = ({ addOrEdit }) => {
+const UserForm = ({ addOrEdit, currentId, usersObject }) => {
 	const intialFieldValues = {
 		fullName: '',
 		mobile: '',
@@ -10,6 +10,18 @@ const UserForm = ({ addOrEdit }) => {
 	}
 
 	let [values, setValues] = useState(intialFieldValues)
+	useEffect(() => {
+		if(currentId == ''){
+			setValues({
+				...intialFieldValues
+			})
+		}
+		else
+			setValues({
+				...usersObject[currentId]
+			})
+
+	},[currentId, usersObject])
 
 	const handleInputChange = e => {
 		let {name, value} = e.target;
@@ -75,8 +87,8 @@ const UserForm = ({ addOrEdit }) => {
 					  />
 				  </div>
 				  <div className='form-group'>
-					  <button type='submit' className='btn btn-primary w-100'>
-					  Save</button>
+					 <button type='submit' className='btn btn-primary w-100'>
+					 {currentId== '' ? 'Save': 'Update' }</button>
 				  </div>
 			  </div>
 			
