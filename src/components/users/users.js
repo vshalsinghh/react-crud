@@ -8,7 +8,7 @@ const Users = () => {
 
 	useEffect(() => {
 		firebaseDb.child('users').on('value', snapshot=>{
-			if(snapshot.val()!=null){
+			if(snapshot.val() != null){
 				setUsersObject({
 					...snapshot.val()
 				})
@@ -18,7 +18,7 @@ const Users = () => {
 		})
 	},[])
 	const addOrEdit = obj => {
-		if(currentId == ''){
+		if(currentId === ''){
 			firebaseDb.child('users').push(
 			obj,
 			err => {

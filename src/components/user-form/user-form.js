@@ -8,10 +8,11 @@ const UserForm = ({ addOrEdit, currentId, usersObject }) => {
 		email: '',
 		address: '',
 	}
+	console.log("userform", intialFieldValues)
 
 	let [values, setValues] = useState(intialFieldValues)
 	useEffect(() => {
-		if(currentId == ''){
+		if(currentId === ''){
 			setValues({
 				...intialFieldValues
 			})
